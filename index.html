@@ -5,19 +5,23 @@
     <title>geoclient javascript example</title>
     <link rel="stylesheet" href="node_modules/ol/ol.css">
     <style>
+      input {
+        display: block;
+        width: 50%;
+      }
       #map {
         width: 100%;
         height: 300px;
         border: 1px solid black;
       }
-      #search {
-        width: 50%;
-      }
     </style>
   </head>
   <body>
     <form id="search-form">
-      <input id="search" placeholder='Enter a location and then hit "Enter"...'>
+      <input id="app_id" placeholder='Enter a valid geoclient appId'>
+      <input id="app_key" placeholder='Enter a valid geoclient appKey'>
+      <input id="input" placeholder='Enter a location and then hit'>
+      <button>Submit</button>
       <div id="map"></div>
       <pre id="geoclient-response"></pre>
     </form>

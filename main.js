@@ -12,7 +12,7 @@ import Fill from 'ol/style/Fill';
 import proj4 from 'proj4';
 
 // TODO externalize appId and key
-const url = 'https://maps.nyc.gov/geoclient/v2/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example';
+const url = 'https://maps.nyc.gov/geoclient/v2/search.json';
 
 const form = document.getElementById('search-form');
 
@@ -97,16 +97,15 @@ const handleGeoClientResponse = geoClientResponse => {
   }
 }
 
-const callGeoClient = input => {
-  fetch(`${url}&input=${input}`).then(response => {
+const submit = event => {
+  event.preventDefault();
+  const appId = form.app_id.value;
+  const appKey = form.app_key.value;
+  const input = form.input.value;
+    fetch(`${url}?app_id=${appId}&app_key=${appKey}&input=${input}`).then(response => {
     response.json().then(handleGeoClientResponse);
   }).catch(error);
-}
 
-const submit = event => {
-  const input = form.search.value;
-  event.preventDefault();
-  callGeoClient(input);
 }
 
 form.addEventListener('submit', submit);
