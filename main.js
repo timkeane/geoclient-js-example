@@ -11,8 +11,7 @@ import Circle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import proj4 from 'proj4';
 
-// TODO externalize appId and key
-const url = 'https://maps.nyc.gov/geoclient/v2/search.json';
+const url = 'https://api.nyc.gov/geoclient/v2/search';
 
 const form = document.getElementById('search-form');
 
@@ -99,10 +98,14 @@ const handleGeoClientResponse = geoClientResponse => {
 
 const submit = event => {
   event.preventDefault();
-  const appId = form.app_id.value;
-  const appKey = form.app_key.value;
-  const input = form.input.value;
-    fetch(`${url}?app_id=${appId}&app_key=${appKey}&input=${input}`).then(response => {
+
+    fetch(`${url}?input=${form.input.value}`, {
+      method: 'GET',
+      headers: {
+          'Ocp-Apim-Subscription-Key': form.key.value,
+          'Cache-Control': 'no-cache'
+      }
+    }).then(response => {
     response.json().then(handleGeoClientResponse);
   }).catch(error);
 

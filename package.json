@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/CityOfNewYork/geoclient#readme",
   "dependencies": {
+    "geoclient-js-example": "file:",
     "ol": "8.1.0",
     "proj4": "latest"
   },
