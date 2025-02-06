@@ -5,6 +5,9 @@
     <title>geoclient javascript example</title>
     <link rel="stylesheet" href="node_modules/ol/ol.css">
     <style>
+      body {
+        font-family: sans-serif;
+      }
       #search-form fieldset {
         width: calc(50% - 30px);
         height: 270px;
@@ -41,7 +44,9 @@
   <body>
     <form id="search-form">
       <fieldset>
-        <input id="key" placeholder="Enter a valid geoclient api key">
+        <label for="key">Geoclient API Key</label>
+        <input id="key"  type="password" placeholder="Enter a valid Geoclient API Key">
+        <label for="input">Address or location</label>
         <input id="input" placeholder="Enter a location">
         <button>Submit</button>
       </fieldset>
